@@ -44,9 +44,9 @@ class FirstScreen: UIViewController {
         gradientLayer.frame = view.bounds
         
         // Define pastel lavender color scheme
-        let color1 = UIColor(red: 230/255, green: 230/255, blue: 250/255, alpha: 1.0).cgColor  // Lavender
-        let color2 = UIColor(red: 216/255, green: 191/255, blue: 216/255, alpha: 1.0).cgColor  // Thistle
-        let color3 = UIColor(red: 250/255, green: 240/255, blue: 255/255, alpha: 1.0).cgColor  // Lavender Blush
+        let color1 = UIColor(red: 230/255, green: 230/255, blue: 250/255, alpha: 1.0).cgColor
+        let color2 = UIColor(red: 216/255, green: 191/255, blue: 216/255, alpha: 1.0).cgColor
+        let color3 = UIColor(red: 250/255, green: 240/255, blue: 255/255, alpha: 1.0).cgColor 
         
         gradientLayer.colors = [color1, color2, color3]
         gradientLayer.startPoint = CGPoint(x: 0, y: 0)  // Top-left
