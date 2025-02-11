@@ -7,12 +7,12 @@
 
 import UIKit
 
-class NextScreen: UIViewController {
+class SecondScreen: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        title = "Second Screen"
     }
     
 
