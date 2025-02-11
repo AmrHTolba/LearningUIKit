@@ -15,8 +15,10 @@ class FirstScreen: UIViewController {
     // MARK: - Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        applyGradientBackground(to: view)
+        title = "First Screen"
+        view.applyGradientBackground()
         setupButton()
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     func setupButton() {
@@ -30,6 +32,8 @@ class FirstScreen: UIViewController {
         
         nextButton.translatesAutoresizingMaskIntoConstraints = false
         
+        nextButton.addTarget(self, action: #selector(goToNextScreen), for: .touchUpInside)
+        
         NSLayoutConstraint.activate([
             nextButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             nextButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
@@ -38,21 +42,11 @@ class FirstScreen: UIViewController {
         ])
         
     }
-    // Background LinearGradient effect
-    func applyGradientBackground(to view: UIView) {
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = view.bounds
-        
-        // Define pastel lavender color scheme
-        let color1 = UIColor(red: 230/255, green: 230/255, blue: 250/255, alpha: 1.0).cgColor
-        let color2 = UIColor(red: 216/255, green: 191/255, blue: 216/255, alpha: 1.0).cgColor
-        let color3 = UIColor(red: 250/255, green: 240/255, blue: 255/255, alpha: 1.0).cgColor 
-        
-        gradientLayer.colors = [color1, color2, color3]
-        gradientLayer.startPoint = CGPoint(x: 0, y: 0)  // Top-left
-        gradientLayer.endPoint = CGPoint(x: 1, y: 1)    // Bottom-right
-        
-        view.layer.insertSublayer(gradientLayer, at: 0)
+
+    
+    @objc func goToNextScreen() {
+        let nextScreen = SecondScreen()
+        navigationController?.pushViewController(nextScreen, animated: true)
     }
 
 

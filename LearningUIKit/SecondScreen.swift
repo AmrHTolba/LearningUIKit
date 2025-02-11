@@ -13,6 +13,7 @@ class SecondScreen: UIViewController {
         super.viewDidLoad()
 
         title = "Second Screen"
+        view.applyGradientBackground()
     }
     
 
