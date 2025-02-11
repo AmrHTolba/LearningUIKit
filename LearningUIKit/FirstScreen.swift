@@ -7,12 +7,20 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class FirstScreen: UIViewController {
+    // MARK: - Properties
+    
 
+    
+    // MARK: - Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = .systemRed
         // Do any additional setup after loading the view.
     }
+    
+    
 
 
 }
