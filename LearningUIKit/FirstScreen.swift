@@ -10,12 +10,15 @@ import UIKit
 class FirstScreen: UIViewController {
     // MARK: - Properties
     private let images: [UIImage] = [
+        UIImage(named: "Jasmine")!,
+        UIImage(named: "Tagetes Marigold")!,
+        UIImage(named: "Blue Lily")!,
+        UIImage(named: "Purple Basil")!,
+        UIImage(named: "Orchid's")!,
         UIImage(named: "1")!,
-        UIImage(named: "2")!,
-        UIImage(named: "3")!,
-        UIImage(named: "4")!,
-        UIImage(named: "5")!
     ]
+    
+    private let imageNames: [String] = ["Jasmine", "Tagetes marigold", "Purple Basil", "Purple Basil", "Orchid's", "Purple Tulip"]
     
     // MARK: - UI Components
     private var tableView: UITableView = {
@@ -41,14 +44,14 @@ class FirstScreen: UIViewController {
     // MARK: - Setup UI
     
     private func setupUI() {
-        title = "First Screen"
+        title = "Mayar's Favorite Flowers <3"
         view.applyGradientBackground()
         setupButton()
         setupTableView()
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.largeTitleTextAttributes = [
                 .foregroundColor: UIColor(red: 92/255, green: 64/255, blue: 120/255, alpha: 1.0),
-                .font: UIFont.systemFont(ofSize: 50, weight: .bold) // Optional: Customize font
+                .font: UIFont.systemFont(ofSize: 30, weight: .bold) 
             ]
     }
     
@@ -106,7 +109,11 @@ extension FirstScreen: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CustomCell.identifier, for: indexPath) as? CustomCell  else { fatalError("Couldn't dequeue custom cell") }
         cell.backgroundColor = UIColor(red: 230/255, green: 220/255, blue: 250/255, alpha: 1.0)
-        cell.textLabel?.text = "\(indexPath.row.description)"
+        
+        let image = self.images[indexPath.row]
+        let imageName = imageNames[indexPath.row]
+        cell.configure(with: image, and: imageName )
+        
         return cell
     }
 }

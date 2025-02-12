@@ -14,17 +14,23 @@ class CustomCell: UITableViewCell {
     // MARK: - UI Elements
     private let myImageView: UIImageView = {
         let iv = UIImageView()
-        iv.contentMode = .scaleAspectFit
+        iv.contentMode = .scaleToFill
         iv.image = UIImage(systemName: "questionmark")
         iv.tintColor = .label
+        iv.layer.cornerRadius = 10
+        iv.clipsToBounds = false
+        iv.layer.shadowColor = UIColor.black.cgColor
+        iv.layer.shadowOpacity = 0.5  // Adjust transparency (0.0 to 1.0)
+        iv.layer.shadowOffset = CGSize(width: 2, height: 2)  // Adjust shadow position
+        iv.layer.shadowRadius = 5
         return iv
     }()
     
     private let myLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .label
+        label.textColor = UIColor(red: 140/255, green: 100/255, blue: 180/255, alpha: 1.0)
         label.textAlignment = .left
-        label.font = .systemFont(ofSize: 17, weight: .regular)
+        label.font = .systemFont(ofSize: 24, weight: .medium)
         label.text = "Ren"
         return label
     }()
@@ -59,8 +65,8 @@ class CustomCell: UITableViewCell {
             myImageView.topAnchor.constraint(equalTo: contentView.layoutMarginsGuide.topAnchor),
             myImageView.bottomAnchor.constraint(equalTo: contentView.layoutMarginsGuide.bottomAnchor),
             
-            myImageView.heightAnchor.constraint(equalToConstant: 90),
-            myImageView.widthAnchor.constraint(equalToConstant: 90),
+            myImageView.heightAnchor.constraint(equalToConstant: 100),
+            myImageView.widthAnchor.constraint(equalToConstant: 100),
             
             myLabel.leadingAnchor.constraint(equalTo: myImageView.trailingAnchor, constant: 16),
             myLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
