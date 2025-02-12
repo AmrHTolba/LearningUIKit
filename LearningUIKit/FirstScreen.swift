@@ -22,7 +22,7 @@ class FirstScreen: UIViewController {
         let tableView = UITableView()
         tableView.backgroundColor = .clear
         tableView.allowsSelection  = true
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(CustomCell.self, forCellReuseIdentifier: CustomCell.identifier)
         
         return tableView
     }()
@@ -104,7 +104,7 @@ extension FirstScreen: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CustomCell.identifier, for: indexPath) as? CustomCell  else { fatalError("Couldn't dequeue custom cell") }
         cell.backgroundColor = UIColor(red: 230/255, green: 220/255, blue: 250/255, alpha: 1.0)
         cell.textLabel?.text = "\(indexPath.row.description)"
         return cell
